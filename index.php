@@ -17,7 +17,11 @@ if (array_key_exists('swipes', $_GET))
 {
 	if (!array_key_exists('sender', $_GET))
 	{
-		// ERROR
+		exit('Error: Sender ID not provided');
+	}
+	else if (!is_int($_GET['sender']))
+	{
+		exit('Error: Sender ID must be an integer.');
 	}
 	else
 	{
@@ -39,7 +43,34 @@ if (array_key_exists('swipes', $_GET))
 		}
 		$result->close();
 
-		echo json_encode($swipes);
+		exit(json_encode($swipes));
 	}
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>FriendSwipe API</title>
+</head>
+<body>
+	<fieldset>
+		<legend>Get Swipes</legend>
+		<form action="index.php" method="get">
+			<p>
+				<label for="sender">Sender: </label>
+				<input type="text" id="sender" name="sender" />
+			</p>
+
+			<p>
+				<input type="submit" name="swipes" />
+			</p>
+		</form>
+	</fieldset>
+</body>
