@@ -19,14 +19,15 @@ if (array_key_exists('swipes', $_GET))
 	{
 		exit('Error: Sender ID not provided');
 	}
-	else if (!is_int($_GET['sender']))
+
+	$sender = intval($_GET['sender']);
+
+	if ($sender <= 0)
 	{
-		exit('Error: Sender ID must be an integer.');
+		exit('Error: Sender ID must be a positive integer.');
 	}
 	else
 	{
-		$sender = $_GET['sender'];
-
 		$swipes = array();
 		$query = 'SELECT `choice`, `sender`, `recipient`, `time`
 			FROM `' . $TBL_PREFIX . 'swipes`
