@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+
 $TBL_PREFIX = getenv('FRIENDSWIPE_TBL_PREFIX');
 
 // Connect to the MySQL database.
