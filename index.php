@@ -136,11 +136,11 @@ if (array_key_exists('swipe', $_POST))
 
 	$choice = $_POST['choice'];
 
-	if (!in_array($choice, array('ignore', 'unfollow', 'reconnect')))
+	if (!in_array($choice, array('ignore', 'reconnect')))
 	{
 		exit(
-			'Error: Choice must be one of the following: \'ignore\', ' .
-			'\'unfollow\', or \'reconnect\''
+			'Error: Choice must be one of the following: \'ignore\' or ' .
+				'\'reconnect\''
 		);
 	}
 
@@ -222,7 +222,6 @@ if (array_key_exists('swipe', $_POST))
 
 				<select id="choice" name="choice">
 					<option>ignore</option>
-					<option>unfollow</option>
 					<option>reconnect</option>
 				</select>
 			</p>
